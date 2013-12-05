@@ -60,6 +60,7 @@ namespace Sledge.Editor.Settings
             SelectedGameDefaultBrushEnt.SelectedIndexChanged += (s, e) => CheckNull(_selectedGame, x => x.DefaultBrushEntity = SelectedGameDefaultBrushEnt.Text);
             SelectedGameTextureScale.ValueChanged += (s, e) => CheckNull(_selectedGame, x => x.DefaultTextureScale = SelectedGameTextureScale.Value);
             SelectedGameLightmapScale.ValueChanged += (s, e) => CheckNull(_selectedGame, x => x.DefaultLightmapScale = SelectedGameLightmapScale.Value);
+            SelectedGameMapSize.SelectedIndexChanged += (s, e) => CheckNull(_selectedGame, x => x.MapSize = SelectedGameMapSize.SelectedIndex > -1 ? int.Parse(SelectedGameMapSize.Items[SelectedGameMapSize.SelectedIndex].ToString()) : 4096);
 
             // Build Configurations
             SelectedBuildName.TextChanged += (s, e) => CheckNull(_selectedBuild, x => x.Name = SelectedBuildName.Text);
@@ -551,6 +552,7 @@ namespace Sledge.Editor.Settings
             SelectedGameDefaultBrushEnt.SelectedText = _selectedGame.DefaultBrushEntity;
             SelectedGameTextureScale.Value = _selectedGame.DefaultTextureScale;
             SelectedGameLightmapScale.Value = _selectedGame.DefaultLightmapScale;
+            SelectedGameMapSize.SelectedIndex = SelectedGameMapSize.FindString(_selectedGame.MapSize.ToString());
 
             SelectedGameSteamInstall.Checked = _selectedGame.SteamInstall;
 

@@ -28,6 +28,8 @@ namespace Sledge.Settings.Models
         public decimal DefaultTextureScale { get; set; }
         public decimal DefaultLightmapScale { get; set; }
 
+        public int MapSize { get; set; }
+
         public List<Fgd> Fgds { get; set; }
         public List<Wad> Wads { get; set; }
 
@@ -62,6 +64,7 @@ namespace Sledge.Settings.Models
             DefaultBrushEntity = gs["DefaultBrushEntity"];
             DefaultTextureScale = gs.PropertyDecimal("DefaultTextureScale");
             DefaultLightmapScale = gs.PropertyDecimal("DefaultLightmapScale");
+            MapSize = gs.PropertyInteger("MapSize");
 
             var wads = gs.Children.FirstOrDefault(x => x.Name == "Wads");
             if (wads != null)
@@ -104,6 +107,7 @@ namespace Sledge.Settings.Models
             gs["DefaultBrushEntity"] = DefaultBrushEntity;
             gs["DefaultTextureScale"] = DefaultTextureScale.ToString(CultureInfo.InvariantCulture);
             gs["DefaultLightmapScale"] = DefaultLightmapScale.ToString(CultureInfo.InvariantCulture);
+            gs["MapSize"] = MapSize.ToString(CultureInfo.InvariantCulture);
 
             var wads = new GenericStructure("Wads");
             var i = 1;

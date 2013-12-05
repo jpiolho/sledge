@@ -95,6 +95,9 @@ namespace Sledge.Editor.Documents
                 GameData = new GameData();
             }
 
+            GameData.MapSizeHigh = Game.MapSize;
+            GameData.MapSizeLow = -Game.MapSize;
+
             TextureCollection = TextureProvider.CreateCollection(game.Wads.Select(x => x.Path).Distinct());
             var texList = Map.GetAllTextures();
             var items = TextureCollection.GetItems(texList);

@@ -140,6 +140,8 @@ namespace Sledge.Editor.Settings
             this.tabConfigDirectories = new System.Windows.Forms.TabPage();
             this.SelectedGameSteamInstall = new System.Windows.Forms.CheckBox();
             this.grpConfigGame = new System.Windows.Forms.GroupBox();
+            this.lblBaseGame = new System.Windows.Forms.Label();
+            this.SelectedGameBase = new System.Windows.Forms.ComboBox();
             this.SelectedGameWonDir = new System.Windows.Forms.TextBox();
             this.lblGameWONDir = new System.Windows.Forms.Label();
             this.SelectedGameDirBrowse = new System.Windows.Forms.Button();
@@ -268,8 +270,9 @@ namespace Sledge.Editor.Settings
             this.btnCancelSettings = new System.Windows.Forms.Button();
             this.btnApplyAndCloseSettings = new System.Windows.Forms.Button();
             this.btnApplySettings = new System.Windows.Forms.Button();
-            this.lblBaseGame = new System.Windows.Forms.Label();
-            this.SelectedGameBase = new System.Windows.Forms.ComboBox();
+            this.lblMapSize = new System.Windows.Forms.Label();
+            this.SelectedGameMapSize = new System.Windows.Forms.ComboBox();
+            this.lblMapSizePlusMinus = new System.Windows.Forms.Label();
             this.tbcSettings.SuspendLayout();
             this.tabGeneral.SuspendLayout();
             this.groupBox20.SuspendLayout();
@@ -1524,6 +1527,9 @@ namespace Sledge.Editor.Settings
             // 
             // tabConfigDirectories
             // 
+            this.tabConfigDirectories.Controls.Add(this.lblMapSizePlusMinus);
+            this.tabConfigDirectories.Controls.Add(this.SelectedGameMapSize);
+            this.tabConfigDirectories.Controls.Add(this.lblMapSize);
             this.tabConfigDirectories.Controls.Add(this.SelectedGameSteamInstall);
             this.tabConfigDirectories.Controls.Add(this.grpConfigGame);
             this.tabConfigDirectories.Controls.Add(this.lblGameName);
@@ -1564,12 +1570,33 @@ namespace Sledge.Editor.Settings
             this.grpConfigGame.Controls.Add(this.SelectedGameSteamDir);
             this.grpConfigGame.Controls.Add(this.lblGameMod);
             this.grpConfigGame.Controls.Add(this.SelectedGameMod);
-            this.grpConfigGame.Location = new System.Drawing.Point(6, 89);
+            this.grpConfigGame.Location = new System.Drawing.Point(6, 112);
             this.grpConfigGame.Name = "grpConfigGame";
             this.grpConfigGame.Size = new System.Drawing.Size(445, 111);
             this.grpConfigGame.TabIndex = 19;
             this.grpConfigGame.TabStop = false;
             this.grpConfigGame.Text = "Game";
+            // 
+            // lblBaseGame
+            // 
+            this.lblBaseGame.Location = new System.Drawing.Point(3, 43);
+            this.lblBaseGame.Name = "lblBaseGame";
+            this.lblBaseGame.Size = new System.Drawing.Size(198, 20);
+            this.lblBaseGame.TabIndex = 11;
+            this.lblBaseGame.Text = "Base Game Directory (e.g. \'valve\')";
+            this.lblBaseGame.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // SelectedGameBase
+            // 
+            this.SelectedGameBase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SelectedGameBase.FormattingEnabled = true;
+            this.SelectedGameBase.Items.AddRange(new object[] {
+            "(Steam only) Half-Life",
+            "Counter-Strike"});
+            this.SelectedGameBase.Location = new System.Drawing.Point(211, 44);
+            this.SelectedGameBase.Name = "SelectedGameBase";
+            this.SelectedGameBase.Size = new System.Drawing.Size(225, 21);
+            this.SelectedGameBase.TabIndex = 12;
             // 
             // SelectedGameWonDir
             // 
@@ -1676,9 +1703,9 @@ namespace Sledge.Editor.Settings
             this.grpConfigSaving.Controls.Add(this.SelectedGameDiffAutosaveDirBrowse);
             this.grpConfigSaving.Controls.Add(this.SelectedGameAutosaveOnlyOnChange);
             this.grpConfigSaving.Controls.Add(this.SelectedGameUseDiffAutosaveDir);
-            this.grpConfigSaving.Location = new System.Drawing.Point(6, 206);
+            this.grpConfigSaving.Location = new System.Drawing.Point(9, 229);
             this.grpConfigSaving.Name = "grpConfigSaving";
-            this.grpConfigSaving.Size = new System.Drawing.Size(445, 234);
+            this.grpConfigSaving.Size = new System.Drawing.Size(445, 211);
             this.grpConfigSaving.TabIndex = 20;
             this.grpConfigSaving.TabStop = false;
             this.grpConfigSaving.Text = "Saving";
@@ -2900,26 +2927,37 @@ namespace Sledge.Editor.Settings
             this.btnApplySettings.UseVisualStyleBackColor = true;
             this.btnApplySettings.Click += new System.EventHandler(this.Apply);
             // 
-            // lblBaseGame
+            // lblMapSize
             // 
-            this.lblBaseGame.Location = new System.Drawing.Point(3, 43);
-            this.lblBaseGame.Name = "lblBaseGame";
-            this.lblBaseGame.Size = new System.Drawing.Size(198, 20);
-            this.lblBaseGame.TabIndex = 11;
-            this.lblBaseGame.Text = "Base Game Directory (e.g. \'valve\')";
-            this.lblBaseGame.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblMapSize.Location = new System.Drawing.Point(13, 89);
+            this.lblMapSize.Name = "lblMapSize";
+            this.lblMapSize.Size = new System.Drawing.Size(62, 20);
+            this.lblMapSize.TabIndex = 22;
+            this.lblMapSize.Text = "Map Size";
+            this.lblMapSize.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // SelectedGameBase
+            // SelectedGameMapSize
             // 
-            this.SelectedGameBase.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SelectedGameBase.FormattingEnabled = true;
-            this.SelectedGameBase.Items.AddRange(new object[] {
-            "(Steam only) Half-Life",
-            "Counter-Strike"});
-            this.SelectedGameBase.Location = new System.Drawing.Point(211, 44);
-            this.SelectedGameBase.Name = "SelectedGameBase";
-            this.SelectedGameBase.Size = new System.Drawing.Size(225, 21);
-            this.SelectedGameBase.TabIndex = 12;
+            this.SelectedGameMapSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SelectedGameMapSize.FormattingEnabled = true;
+            this.SelectedGameMapSize.Items.AddRange(new object[] {
+            "4096",
+            "8192",
+            "16384",
+            "32768"});
+            this.SelectedGameMapSize.Location = new System.Drawing.Point(104, 90);
+            this.SelectedGameMapSize.Name = "SelectedGameMapSize";
+            this.SelectedGameMapSize.Size = new System.Drawing.Size(98, 21);
+            this.SelectedGameMapSize.TabIndex = 23;
+            // 
+            // lblMapSizePlusMinus
+            // 
+            this.lblMapSizePlusMinus.Location = new System.Drawing.Point(78, 89);
+            this.lblMapSizePlusMinus.Name = "lblMapSizePlusMinus";
+            this.lblMapSizePlusMinus.Size = new System.Drawing.Size(22, 20);
+            this.lblMapSizePlusMinus.TabIndex = 24;
+            this.lblMapSizePlusMinus.Text = "+/-";
+            this.lblMapSizePlusMinus.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // SettingsForm
             // 
@@ -3242,5 +3280,8 @@ namespace Sledge.Editor.Settings
         private System.Windows.Forms.CheckBox DisableWadTransparency;
         private System.Windows.Forms.Label lblBaseGame;
         private System.Windows.Forms.ComboBox SelectedGameBase;
+        private System.Windows.Forms.Label lblMapSizePlusMinus;
+        private System.Windows.Forms.ComboBox SelectedGameMapSize;
+        private System.Windows.Forms.Label lblMapSize;
 	}
 }
