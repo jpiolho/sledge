@@ -7,6 +7,7 @@ using Sledge.Editor.Documents;
 using Sledge.FileSystem;
 using Sledge.Providers.Model;
 using Sledge.UI;
+using OpenTK.Graphics.OpenGL;
 
 namespace Sledge.Editor.Rendering.Helpers
 {
@@ -56,6 +57,9 @@ namespace Sledge.Editor.Rendering.Helpers
         public void Render3D(Viewport3D viewport, MapObject o)
         {
             var e = (Entity) o;
+
+            
+
             if (e.GameData == null) return;
             var studio = e.GameData.Behaviours.FirstOrDefault(x => x.Name == "studio");
             if (studio == null || studio.Values.Count != 1 || studio.Values[0].Trim() == "") return;
@@ -72,8 +76,19 @@ namespace Sledge.Editor.Rendering.Helpers
                 model = ModelProvider.LoadModel(file);
                 _cache.Add(model);
             }
+
+
+
+            GL.MatrixMode(MatrixMode.Modelview);
+            GL.PushMatrix();
+
+            GL.Translate(e.Origin.DX, e.Origin.DY, e.Origin.DZ);
+
+
             var renderable = new ModelRenderable(model);
             renderable.Render(viewport);
+
+            GL.PopMatrix();
         }
 
         public void AfterRender3D(Viewport3D viewport)
