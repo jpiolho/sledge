@@ -210,11 +210,13 @@ namespace Sledge.Editor.Documents
 
         public void FileSave()
         {
+            _document.Map.WorldSpawn.EntityData.SetPropertyValue("wad", string.Join(";", _document.Game.Wads.Select(x => x.Path)));
             _document.SaveFile();
         }
 
         public void FileSaveAs()
         {
+            _document.Map.WorldSpawn.EntityData.SetPropertyValue("wad", string.Join(";", _document.Game.Wads.Select(x => x.Path)));
             _document.SaveFile(null, true);
         }
 
